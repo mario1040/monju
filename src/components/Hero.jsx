@@ -28,8 +28,8 @@ const Hero = () => {
     // الترتيب: M -> Logo -> N -> J -> U
     const combinedAnimationTargets = [
       heroSplit.chars[0], // حرف M
-      logoRef.current,    // صورة اللوجو
-      ...heroSplit.chars.slice(1) // أحرف NJU
+      logoRef.current, // صورة اللوجو
+      ...heroSplit.chars.slice(1), // أحرف NJU
     ];
 
     // 3. تطبيق الأنيميشن على المجموعة كاملة
@@ -89,23 +89,29 @@ const Hero = () => {
         {/* تم تعديل العنوان هنا */}
         <div className="title-wrapper flex items-center justify-center gap-[0.05em]">
           <h1 className="title-text title">M</h1>
-          
+
           {/* صورة اللوجو بدلاً من حرف O */}
-          <img 
+          <img
             ref={logoRef}
             src="public/images/image (1).png" // تم تصحيح الامتداد من pnh إلى png
             alt="Monju Logo"
             className="title-logo"
             // ملاحظة: قد تحتاج لضبط الـ style أدناه ليتناسب حجم اللوجو مع النص
-            style={{ 
-              height: '15em', // اجعل الارتفاع نسبي لحجم الخط
-              width: 'auto', 
-              objectFit: 'contain',
-              display: 'inline-block',
-              transform: 'translateY(5%)' // تعديل بسيط للمحاذاة البصرية إذا لزم الأمر
-            }} 
+            style={{
+              // الارتفاع (Height)
+              // clamp(للموبايل, التدرج, للديسكتوب)
+              height: "clamp(0.85em, 20vw, 15em)",
+              width: "auto",
+              objectFit: "contain",
+              display: "inline-block",
+
+              // التعديل هنا (Transform):
+              // بنقوله: لو فاتح من موبايل انزل مسافة كبيرة (مثلاً 0.6em)
+              // ولو فاتح من ديسكتوب انزل مسافة صغيرة جداً (مثلاً 0.1em) عشان ميبقاش ساقط
+              transform: isMobile ? "translateY(3.5em)" : "translateY(0.1em)",
+            }}
           />
-          
+
           <h1 className="title-text title">NJU</h1>
         </div>
 
