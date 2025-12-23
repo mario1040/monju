@@ -100,7 +100,7 @@ const Hero = () => {
             style={{
               // الارتفاع (Height)
               // clamp(للموبايل, التدرج, للديسكتوب)
-              height: "clamp(0.85em, 20vw, 15em)",
+              height: "clamp(7em, 20vw, 15em)",
               width: "auto",
               objectFit: "contain",
               display: "inline-block",
